@@ -25,6 +25,11 @@ class FactOfTheDay
     protected $title;
 
     /**
+     * @MongoDB\Field(type="date")
+     */
+    protected $created_at;
+
+    /**
      * @return mixed
      */
     public function getTitle()
@@ -40,10 +45,7 @@ class FactOfTheDay
         $this->title = $title;
     }
 
-    /**
-     * @MongoDB\Field(type="date")
-     */
-    protected $created_at;
+
 
     /**
      * @return mixed

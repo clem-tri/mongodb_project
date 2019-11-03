@@ -4,11 +4,21 @@
 
 {% block body %}
 <div class="container" style="margin-top: 20px;">
+    <div class="col-4">
+        {{ form(filterForm) }}
+    </div>
+
     {% if facts|length > 0 %}
         {% for fact in facts %}
             <div class="card">
+                <div class="text-right">
+                    <form method="post" action="{{ path('deleteFact',{fact: fact.id}) }}">
+                        <button type="submit" class="btn btn-danger">X</button>
+                    </form>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ fact.title }}</h5>
+                        <h5 class="card-title">{{ fact.title }}</h5>
+
                     <p class="card-text">
                         {{ fact.message }}
                     </p>
@@ -17,7 +27,7 @@
             </div>
         {% endfor %}
     {% else %}
-        <a href="{{ path('newFact') }}">Inaugurez votre journal !</a>
+      Aucun résultat...
     {% endif %}
 
 </div>
